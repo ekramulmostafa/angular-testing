@@ -13,7 +13,17 @@ export class ProductListComponent implements OnInit{
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    listFilter: string = 'cart';
+    // listFilter: string = 'cart';
+    _listFilter: string;
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(val: string) {
+        this._listFilter = val;
+        this.filterProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+    }
+
+    filterProducts: IProduct[];
     products: IProduct[] = [{
             'productId': 1,
             'productName': 'Leaf Rake',
@@ -44,11 +54,17 @@ export class ProductListComponent implements OnInit{
             'starRating': 4.8,
             'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png'
         }];
-
+    constructor() {
+        this.filterProducts = this.products;
+        this.listFilter = 'cart';
+    }
+    performFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter( (product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 );
+    }
     toggleImage(): void {
         this.showImage = !this.showImage;
     }
-
     ngOnInit(): void {
         console.log('asd');
     }
