@@ -13,7 +13,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'pm-root',
     template: `
-        <div>{{pageTitle}}</div>
         <div>
             <pm-products></pm-products>
         </div>
