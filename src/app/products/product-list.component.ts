@@ -1,18 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IProduct} from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
     pageTite: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
     listFilter: string = 'cart';
-    products: any[] = [{
+    products: IProduct[] = [{
             'productId': 1,
             'productName': 'Leaf Rake',
             'productCode': 'GDN-0011',
@@ -43,7 +45,11 @@ export class ProductListComponent {
             'imageUrl': 'http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png'
         }];
 
-    toggleImage(): void{
+    toggleImage(): void {
         this.showImage = !this.showImage;
+    }
+
+    ngOnInit(): void {
+        console.log('asd');
     }
 }
