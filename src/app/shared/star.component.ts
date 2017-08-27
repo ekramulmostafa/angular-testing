@@ -1,5 +1,5 @@
 ///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
-import {Component, OnChanges, EventEmitter, Output, Input} from '@angular/core';
+import {Component, OnChanges, EventEmitter, Input, Output} from '@angular/core';
 
 @Component ({
     selector: 'pm-star',
